@@ -35,4 +35,10 @@ public class EmployeesContorller {
                 .map(EmployeesGetResponse::from)
                 .toList();
     }
+
+    @GetMapping("/{id}")
+    public EmployeesGetResponse getEmployeesDetail(@PathVariable Long id) {
+        Employees employees = employeesService.getEmployeesDetail(id);
+        return EmployeesGetResponse.from(employees);
+    }
 }

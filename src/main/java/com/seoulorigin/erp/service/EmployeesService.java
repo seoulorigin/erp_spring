@@ -35,4 +35,11 @@ public class EmployeesService {
         else
             return employeesRepository.findAll();
     }
+
+    // 2-2. 직원 상세 조회
+    @Transactional
+    public Employees getEmployeesDetail(Long id) {
+        return employeesRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Failed."));
+    }
 }
