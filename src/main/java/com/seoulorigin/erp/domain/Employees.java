@@ -31,4 +31,9 @@ public class Employees {
         this.position = position;
         this.created_at = LocalDateTime.now();
     }
+
+    public void update(String department, String position) {
+        this.department = department;
+        this.position = position;
+    }
 }

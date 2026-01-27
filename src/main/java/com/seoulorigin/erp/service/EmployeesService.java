@@ -3,6 +3,7 @@ package com.seoulorigin.erp.service;
 import com.seoulorigin.erp.domain.Employees;
 import com.seoulorigin.erp.dto.EmployeesCreateRequest;
 import com.seoulorigin.erp.dto.EmployeesCreateResponse;
+import com.seoulorigin.erp.dto.EmployeesUpdateRequest;
 import com.seoulorigin.erp.repository.EmployeesRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +42,14 @@ public class EmployeesService {
     public Employees getEmployeesDetail(Long id) {
         return employeesRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Failed."));
+    }
+
+    // 3. 직원 수정
+    @Transactional
+    public void updateEmployees(Long id, EmployeesUpdateRequest request) {
+        Employees employees = employeesRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Failed."));
+
+        employees.update(request.department(), request.position());
     }
 }
