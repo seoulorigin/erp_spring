@@ -52,4 +52,13 @@ public class EmployeesService {
 
         employees.update(request.department(), request.position());
     }
+
+    // 4. 직원 삭제
+    @Transactional
+    public void deleteEmployees(Long id) {
+        Employees employees = employeesRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Failed."));
+
+        employeesRepository.delete(employees);
+    }
 }

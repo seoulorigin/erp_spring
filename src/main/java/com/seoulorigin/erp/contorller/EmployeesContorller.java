@@ -52,4 +52,9 @@ public class EmployeesContorller {
     ) {
         employeesService.updateEmployees(id, request);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteEmployees(@PathVariable Long id) {
+        employeesService.deleteEmployees(id);
+    }
 }
